@@ -5,7 +5,7 @@ pipeline {
         stage('SCM Checkout') {
             steps {
                 retry(3) {
-                    git branch: 'main', url: 'https://github.com/Kavidu-Welipitiya/test_jenkins.git'
+                    git branch: 'main', url: 'https://github.com/HGSChandeepa/test-node'
                 }
             }
         }
@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Login to Docker Hub') {
             steps {
-                withCredentials([string(credentialsId: 'test_dockerhub_pass', variable: 'samindocker')]) {
+                withCredentials([string(credentialsId: 'test_dockerhub_pass', variable: 'test_dockerhub_pass')]) {
                     script {
                         bat "docker login -u adomicarts -p %samindocker%"
                     }
